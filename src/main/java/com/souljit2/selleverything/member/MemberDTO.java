@@ -5,10 +5,8 @@ import lombok.*;
 import java.sql.Timestamp;
 
 @Getter
-@Setter
 @ToString
 @EqualsAndHashCode
-@Builder
 public class MemberDTO {
     private Integer memberNo;                   /* 사용자 no(pk)*/
     private String memberId;                    /* 사용자 id */
