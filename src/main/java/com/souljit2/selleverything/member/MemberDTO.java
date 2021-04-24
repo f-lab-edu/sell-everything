@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class MemberDTO {
 
     @NonNull
-    private int memberNo;                       /* 사용자 pk */
+    private int id;
     @NonNull
     @NotBlank(message = "ID를 입력해주세요.")
     private String memberId;
