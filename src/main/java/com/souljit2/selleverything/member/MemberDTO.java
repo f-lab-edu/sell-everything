@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 @ToString
 @EqualsAndHashCode
 public class MemberDTO {
-    private int memberNo;                       /* 사용자 pk */
+    private int id;
     private String memberId;
     private String memberPassword;
     private String memberName;
@@ -17,5 +17,5 @@ public class MemberDTO {
     private Boolean membershipAgreementYn;      /* 개인정보 활용 약관 동의*/
     private Boolean optionalInfoAgreementYn;    /* 선택정보 활용 약관 동의 */
     private Timestamp createdAt;
-    private Timestamp updatedAt;                /* 사용자 정보 수정 일시 */
+    private Timestamp updatedAt;
 }
