@@ -22,7 +22,7 @@ public class MemberController {
         try {
             memberService.signUp(memberDTO);
             ApiResponseMessage message = new ApiSuccessMessage<MemberDTO>("회원가입", "회원가입 성공", null);
-            return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
+            return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.CREATED);
         } catch (DuplicateKeyException e){
             ApiResponseMessage message = new ApiErrorMessage("회원가입", "아이디 중복");
             return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.CONFLICT);
