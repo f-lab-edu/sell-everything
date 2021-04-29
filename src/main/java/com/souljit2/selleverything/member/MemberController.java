@@ -8,6 +8,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
@@ -27,5 +29,13 @@ public class MemberController {
             ApiResponseMessage message = new ApiErrorMessage("회원가입", "아이디 중복");
             return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping("/signIn")
+    public ResponseEntity<MemberDTO> signIn(@RequestBody @Valid SignInRequestDTO signInRequestDTO, HttpSession session) throws Exception  {
+        MemberDTO memberInfoDTO = memberService.signIn(signInRequestDTO);
+        session.setAttribute("member", memberInfoDTO);
+        if (memberInfoDTO != null) return new ResponseEntity<MemberDTO>(memberInfoDTO, HttpStatus.OK);
+        else return new ResponseEntity(HttpStatus.UNAUTHORIZED);
     }
 }
