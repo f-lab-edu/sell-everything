@@ -4,5 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberMapper {
-    public int signUp(MemberDTO memberDTO);
+    public void signUp(MemberDTO memberDTO);
+    public MemberDTO signIn(SignInRequestDTO signInRequestDTO);
 }
