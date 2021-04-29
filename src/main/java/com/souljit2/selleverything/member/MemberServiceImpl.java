@@ -17,4 +17,12 @@ public class MemberServiceImpl implements MemberService {
         memberDTO.setMemberPassword(encryptedPassword);
         memberMapper.signUp(memberDTO);
     }
+
+    @Override
+    public MemberDTO signIn(SignInRequestDTO signInRequestDTO) {
+        MemberDTO memberInfoDTO = memberMapper.signIn(signInRequestDTO);
+        if(memberInfoDTO == null) return null;
+        boolean isPasswordMatches = passwordEncoder.matches(signInRequestDTO.getMemberPassword(), memberInfoDTO.getMemberPassword());
+        return isPasswordMatches ? memberInfoDTO : null;
+    }
 }
