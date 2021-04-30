@@ -1,7 +1,7 @@
 package com.souljit2.selleverything.member;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,11 +9,10 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService {
 
     private MemberMapper memberMapper;
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public void signUp(MemberDTO memberDTO) {
-        String encryptedPassword = passwordEncoder.encode(memberDTO.getMemberPassword());
+        String encryptedPassword = BCrypt.hashpw(memberDTO.getMemberPassword(), BCrypt.gensalt());
         memberDTO.setMemberPassword(encryptedPassword);
         memberMapper.signUp(memberDTO);
     }
