@@ -21,7 +21,7 @@ public class MemberServiceImpl implements MemberService {
     public MemberDTO signIn(SignInRequestDTO signInRequestDTO) {
         MemberDTO memberInfoDTO = memberMapper.signIn(signInRequestDTO);
         if(memberInfoDTO == null) return null;
-        boolean isPasswordMatches = passwordEncoder.matches(signInRequestDTO.getMemberPassword(), memberInfoDTO.getMemberPassword());
+        boolean isPasswordMatches = BCrypt.checkpw(signInRequestDTO.getMemberPassword(), memberInfoDTO.getMemberPassword());
         return isPasswordMatches ? memberInfoDTO : null;
     }
 }
