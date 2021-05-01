@@ -1,8 +1,8 @@
 package com.souljit2.selleverything.member;
 
+import com.souljit2.selleverything.utils.Responses;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -18,9 +18,9 @@ public class MemberController {
     public ResponseEntity signUp(@RequestBody @Valid MemberDTO memberDTO) throws Exception {
         try {
             memberService.signUp(memberDTO);
-            return new ResponseEntity(HttpStatus.CREATED);
+            return Responses.CREATED;
         } catch (DuplicateKeyException e){
-            return new ResponseEntity(HttpStatus.CONFLICT);
+            return Responses.CONFLICT;
         }
     }
 }
