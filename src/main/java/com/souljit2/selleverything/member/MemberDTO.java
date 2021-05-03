@@ -28,7 +28,7 @@ public class MemberDTO {
     @NonNull
     @NotBlank(message = "휴대폰 번호를 입력해주세요.")
     private String memberPhone;
-    @AssertTrue /* 기대값 = true */
+    @AssertTrue
     private Boolean membershipAgreementYn;      /* 개인정보 활용 약관 동의. 필수*/
     @NonNull
     private Boolean optionalInfoAgreementYn;    /* 선택정보 활용 약관 동의. 선택 */
