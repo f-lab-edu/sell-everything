@@ -13,14 +13,11 @@ import javax.validation.Valid;
 @RequestMapping("/apis/auth")
 public class MemberController {
 
-    private MemberServiceImpl memberService; /* @AllArgsConstructor에 의해 주입 */
+    private MemberServiceImpl memberService;
+
     @PostMapping("/signUp")
     public ResponseEntity signUp(@RequestBody @Valid MemberDTO memberDTO) throws Exception {
-        try {
-            memberService.signUp(memberDTO);
-            return Responses.CREATED;
-        } catch (DuplicateKeyException e){
-            return Responses.CONFLICT;
-        }
+        memberService.signUp(memberDTO);
+        return Responses.CREATED;
     }
 }
