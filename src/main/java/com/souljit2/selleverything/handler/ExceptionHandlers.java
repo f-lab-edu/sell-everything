@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlers {
+    
     @ExceptionHandler(DuplicateKeyException.class)
     public ResponseEntity handleDuplicateKeyException() {
         return Responses.CONFLICT;
