@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.member;
 
+import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,12 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberDTO signIn(SignInRequestDTO signInRequestDTO) {
         MemberDTO memberInfoDTO = memberMapper.signIn(signInRequestDTO);
-        if(memberInfoDTO == null) return null;
-        boolean isPasswordMatches = BCrypt.checkpw(signInRequestDTO.getMemberPassword(), memberInfoDTO.getMemberPassword());
-        return isPasswordMatches ? memberInfoDTO : null;
+        if(memberInfoDTO == null) throw new AuthenticationFailedException();
+        boolean isPasswordMatches = BCrypt.checkpw(
+                signInRequestDTO.getMemberPassword(),
+                memberInfoDTO.getMemberPassword()
+        );
+        if(isPasswordMatches) return memberInfoDTO;
+        else throw new AuthenticationFailedException();
     }
 }
