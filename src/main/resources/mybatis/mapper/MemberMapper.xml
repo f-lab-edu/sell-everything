@@ -11,7 +11,7 @@
     </insert>
 
     <select id="signIn" resultType="com.souljit2.selleverything.member.MemberDTO">
-        SELECT *
+        SELECT id, memberPassword
         FROM tb_member
         WHERE memberId = #{memberId}
     </select>
