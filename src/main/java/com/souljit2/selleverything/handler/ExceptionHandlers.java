@@ -16,6 +16,7 @@ public class ExceptionHandlers {
     }
 
     @ExceptionHandler(AuthenticationFailedException.class)
-    public ResponseEntity handleAuthenticationFailedException() { return Responses.UNAUTHORIZED; }
-
+    public ResponseEntity handleAuthenticationFailedException() {
+        return Responses.UNAUTHORIZED;
+    }
 }
