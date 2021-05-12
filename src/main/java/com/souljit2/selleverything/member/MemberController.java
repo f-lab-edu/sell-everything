@@ -1,5 +1,7 @@
 package com.souljit2.selleverything.member;
 
+import com.souljit2.selleverything.service.MemberService;
+import com.souljit2.selleverything.service.SessionService;
 import com.souljit2.selleverything.utils.Responses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,8 @@ import javax.validation.Valid;
 @RequestMapping("/apis/auth")
 public class MemberController {
 
-    private MemberServiceImpl memberService;
+    private MemberService memberService;
+    private SessionService sessionService;
 
     @PostMapping("/signUp")
     public ResponseEntity signUp(@RequestBody @Valid MemberDTO memberDTO) throws Exception {
@@ -26,7 +29,8 @@ public class MemberController {
     public ResponseEntity<MemberDTO> signIn(
             @RequestBody @Valid SignInRequestDTO signInRequestDTO,
             HttpSession session) throws Exception  {
-        memberService.signIn(signInRequestDTO, session);
+        MemberDTO memberInfoDTO = memberService.signIn(signInRequestDTO, session);
+        sessionService.setMemberSession(memberInfoDTO, session);
         return Responses.OK;
     }
 }

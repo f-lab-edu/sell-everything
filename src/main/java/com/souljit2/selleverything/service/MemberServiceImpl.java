@@ -1,6 +1,10 @@
-package com.souljit2.selleverything.member;
+package com.souljit2.selleverything.service;
 
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
+import com.souljit2.selleverything.member.MemberDTO;
+import com.souljit2.selleverything.member.MemberMapper;
+import com.souljit2.selleverything.member.SignInRequestDTO;
+import com.souljit2.selleverything.service.MemberService;
 import com.souljit2.selleverything.utils.SessionUtils;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -22,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void signIn(SignInRequestDTO signInRequestDTO, HttpSession session) {
+    public MemberDTO signIn(SignInRequestDTO signInRequestDTO, HttpSession session) {
         MemberDTO memberInfoDTO = memberMapper.signIn(signInRequestDTO);
         if(memberInfoDTO == null) throw new AuthenticationFailedException();
         boolean isPasswordMatches = BCrypt.checkpw(
@@ -31,6 +35,6 @@ public class MemberServiceImpl implements MemberService {
         );
         if(!isPasswordMatches)
             throw new AuthenticationFailedException();
-        SessionUtils.setMemberSession(session, memberInfoDTO.getId());
+        return memberInfoDTO;
     }
 }
