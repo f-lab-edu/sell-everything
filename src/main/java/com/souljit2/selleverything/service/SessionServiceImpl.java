@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 @Service
 @AllArgsConstructor
 public class SessionServiceImpl implements SessionService {
+
     @Override
     public void setMemberSession(MemberDTO memberDTO, HttpSession session) {
         SessionUtils.setMemberSession(session, memberDTO.getId());
