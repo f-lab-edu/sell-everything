@@ -12,20 +12,21 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class AuthServiceImpl implements AuthService {
 
-    private MemberMapper memberMapper;
+    private AuthMapper authMapper;
+    private SessionService sessionService;
 
     @Override
     public void signUp(MemberDTO memberDTO) {
         String encryptedPassword = BCrypt.hashpw(memberDTO.getMemberPassword(), BCrypt.gensalt());
         memberDTO.setMemberPassword(encryptedPassword);
-        memberMapper.signUp(memberDTO);
+        authMapper.signUp(memberDTO);
     }
 
     @Override
-    public MemberDTO signIn(SignInRequestDTO signInRequestDTO, HttpSession session) {
-        MemberDTO memberInfoDTO = memberMapper.signIn(signInRequestDTO);
+    public void signIn(SignInRequestDTO signInRequestDTO, HttpSession session) {
+        MemberDTO memberInfoDTO = authMapper.signIn(signInRequestDTO);
         if(memberInfoDTO == null) throw new AuthenticationFailedException();
         boolean isPasswordMatches = BCrypt.checkpw(
                 signInRequestDTO.getMemberPassword(),
@@ -33,6 +34,6 @@ public class MemberServiceImpl implements MemberService {
         );
         if(!isPasswordMatches)
             throw new AuthenticationFailedException();
-        return memberInfoDTO;
+        sessionService.setMemberSession(memberInfoDTO, session);
     }
 }

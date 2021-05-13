@@ -31,8 +31,7 @@ public class AuthController {
     public ResponseEntity<MemberDTO> signIn(
             @RequestBody @Valid SignInRequestDTO signInRequestDTO,
             HttpSession session) throws Exception  {
-        MemberDTO memberInfoDTO = authService.signIn(signInRequestDTO, session);
-        sessionService.setMemberSession(memberInfoDTO, session);
+        authService.signIn(signInRequestDTO, session);
         return Responses.OK;
     }
 }

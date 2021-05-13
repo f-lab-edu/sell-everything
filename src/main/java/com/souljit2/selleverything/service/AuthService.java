@@ -7,5 +7,5 @@ import javax.servlet.http.HttpSession;
 
 public interface AuthService {
     public void signUp(MemberDTO memberDTO);
-    public MemberDTO signIn(SignInRequestDTO signInRequestDTO, HttpSession session);
+    public void signIn(SignInRequestDTO signInRequestDTO, HttpSession session);
 }
