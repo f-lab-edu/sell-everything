@@ -1,6 +1,6 @@
 package com.souljit2.selleverything.member;
 
-import com.souljit2.selleverything.service.MemberService;
+import com.souljit2.selleverything.service.AuthService;
 import com.souljit2.selleverything.service.SessionService;
 import com.souljit2.selleverything.utils.Responses;
 import lombok.AllArgsConstructor;
@@ -16,12 +16,12 @@ import javax.validation.Valid;
 @RequestMapping("/apis/auth")
 public class MemberController {
 
-    private MemberService memberService;
+    private AuthService authService;
     private SessionService sessionService;
 
     @PostMapping("/signUp")
     public ResponseEntity signUp(@RequestBody @Valid MemberDTO memberDTO) throws Exception {
-        memberService.signUp(memberDTO);
+        authService.signUp(memberDTO);
         return Responses.CREATED;
     }
 
@@ -29,7 +29,7 @@ public class MemberController {
     public ResponseEntity<MemberDTO> signIn(
             @RequestBody @Valid SignInRequestDTO signInRequestDTO,
             HttpSession session) throws Exception  {
-        MemberDTO memberInfoDTO = memberService.signIn(signInRequestDTO, session);
+        MemberDTO memberInfoDTO = authService.signIn(signInRequestDTO, session);
         sessionService.setMemberSession(memberInfoDTO, session);
         return Responses.OK;
     }
