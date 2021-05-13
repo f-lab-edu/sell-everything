@@ -1,5 +1,7 @@
-package com.souljit2.selleverything.member;
+package com.souljit2.selleverything.auth;
 
+import com.souljit2.selleverything.model.MemberDTO;
+import com.souljit2.selleverything.model.SignInRequestDTO;
 import com.souljit2.selleverything.service.AuthService;
 import com.souljit2.selleverything.service.SessionService;
 import com.souljit2.selleverything.utils.Responses;
@@ -14,7 +16,7 @@ import javax.validation.Valid;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/apis/auth")
-public class MemberController {
+public class AuthController {
 
     private AuthService authService;
     private SessionService sessionService;

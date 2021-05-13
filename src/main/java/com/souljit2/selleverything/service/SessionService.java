@@ -1,6 +1,6 @@
 package com.souljit2.selleverything.service;
 
-import com.souljit2.selleverything.member.MemberDTO;
+import com.souljit2.selleverything.model.MemberDTO;
 
 import javax.servlet.http.HttpSession;
 
