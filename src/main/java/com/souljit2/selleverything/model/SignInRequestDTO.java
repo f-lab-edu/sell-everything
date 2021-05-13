@@ -1,4 +1,4 @@
-package com.souljit2.selleverything.member;
+package com.souljit2.selleverything.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
