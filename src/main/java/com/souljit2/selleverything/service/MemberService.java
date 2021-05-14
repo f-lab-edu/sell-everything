@@ -1,11 +1,10 @@
 package com.souljit2.selleverything.service;
 
 import com.souljit2.selleverything.model.MemberDTO;
+import com.souljit2.selleverything.model.SignInRequestDTO;
 
-import javax.servlet.http.HttpSession;
+public interface MemberService {
 
-public interface SessionService {
-
-    public void setMemberSession(MemberDTO memberDTO, HttpSession session);
-
+    public void insertMember(MemberDTO newMemberInfo);
+    public MemberDTO getMemberInfo(SignInRequestDTO signInInfo);
 }
