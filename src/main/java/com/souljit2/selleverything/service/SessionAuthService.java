@@ -5,7 +5,7 @@ import com.souljit2.selleverything.model.SignInRequestDTO;
 
 import javax.servlet.http.HttpSession;
 
-public interface AuthService {
-    public void signUp(MemberDTO memberDTO);
-    public void signIn(SignInRequestDTO signInRequestDTO, HttpSession session);
+public interface SessionAuthService {
+    public void signUp(MemberDTO newMemberInfo);
+    public void signIn(SignInRequestDTO signInInfo, HttpSession session);
 }
