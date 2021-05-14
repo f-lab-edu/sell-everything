@@ -2,7 +2,7 @@ package com.souljit2.selleverything.service;
 
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
-import com.souljit2.selleverything.auth.AuthMapper;
+import com.souljit2.selleverything.mapper.MemberMapper;
 import com.souljit2.selleverything.model.SignInRequestDTO;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -14,19 +14,19 @@ import javax.servlet.http.HttpSession;
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private AuthMapper authMapper;
-    private SessionService sessionService;
+    private MemberMapper memberMapper;
+    private MemberService memberService;
 
     @Override
     public void signUp(MemberDTO memberDTO) {
         String encryptedPassword = BCrypt.hashpw(memberDTO.getMemberPassword(), BCrypt.gensalt());
         memberDTO.setMemberPassword(encryptedPassword);
-        authMapper.signUp(memberDTO);
+        memberMapper.insertMember(memberDTO);
     }
 
     @Override
     public void signIn(SignInRequestDTO signInRequestDTO, HttpSession session) {
-        MemberDTO memberInfoDTO = authMapper.signIn(signInRequestDTO);
+        MemberDTO memberInfoDTO = memberMapper.getMemberInfo(signInRequestDTO);
         if(memberInfoDTO == null) throw new AuthenticationFailedException();
         boolean isPasswordMatches = BCrypt.checkpw(
                 signInRequestDTO.getMemberPassword(),
@@ -34,6 +34,6 @@ public class AuthServiceImpl implements AuthService {
         );
         if(!isPasswordMatches)
             throw new AuthenticationFailedException();
-        sessionService.setMemberSession(memberInfoDTO, session);
+        memberService.setMemberSession(memberInfoDTO, session);
     }
 }
