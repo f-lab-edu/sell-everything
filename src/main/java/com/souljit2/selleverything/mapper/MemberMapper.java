@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
 
-    public void insertMember(MemberDTO memberDTO);
-    public MemberDTO getMemberInfo(SignInRequestDTO signInRequestDTO);
+    public void insertMember(MemberDTO memberInfo);
+    public MemberDTO getMemberInfo(SignInRequestDTO signInInfo);
 
 }
