@@ -2,8 +2,7 @@ package com.souljit2.selleverything.auth;
 
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
-import com.souljit2.selleverything.service.AuthService;
-import com.souljit2.selleverything.service.SessionService;
+import com.souljit2.selleverything.service.SessionAuthService;
 import com.souljit2.selleverything.utils.Responses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,20 +17,19 @@ import javax.validation.Valid;
 @RequestMapping("/apis/auth")
 public class AuthController {
 
-    private AuthService authService;
-    private SessionService sessionService;
+    private SessionAuthService sessionAuthService;
 
     @PostMapping("/signUp")
-    public ResponseEntity signUp(@RequestBody @Valid MemberDTO memberDTO) throws Exception {
-        authService.signUp(memberDTO);
+    public ResponseEntity signUp(@RequestBody @Valid MemberDTO newMemberInfo) throws Exception {
+        sessionAuthService.signUp(newMemberInfo);
         return Responses.CREATED;
     }
 
     @PostMapping("/signIn")
     public ResponseEntity<MemberDTO> signIn(
-            @RequestBody @Valid SignInRequestDTO signInRequestDTO,
+            @RequestBody @Valid SignInRequestDTO signInInfo,
             HttpSession session) throws Exception  {
-        authService.signIn(signInRequestDTO, session);
+        sessionAuthService.signIn(signInInfo, session);
         return Responses.OK;
     }
 }
