@@ -1,4 +1,4 @@
-package com.souljit2.selleverything.auth;
+package com.souljit2.selleverything.mapper;
 
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
 
-    public void signUp(MemberDTO memberDTO);
-    public MemberDTO signIn(SignInRequestDTO signInRequestDTO);
+    public void insertMember(MemberDTO memberDTO);
+    public MemberDTO getMemberInfo(SignInRequestDTO signInRequestDTO);
 
 }
