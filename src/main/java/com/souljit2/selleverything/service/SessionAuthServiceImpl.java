@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.service;
 
+import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
 import com.souljit2.selleverything.utils.SessionUtils;
@@ -24,6 +25,14 @@ public class SessionAuthServiceImpl implements SessionAuthService {
     @Override
     public void signIn(SignInRequestDTO signInInfo, HttpSession session) {
         MemberDTO memberInfoDTO = memberService.getMemberInfo(signInInfo);
+        if(memberInfoDTO == null)
+            throw new AuthenticationFailedException();
+        boolean isPasswordMatches = BCrypt.checkpw(
+                signInInfo.getMemberPassword(),
+                memberInfoDTO.getMemberPassword()
+        );
+        if(!isPasswordMatches)
+            throw new AuthenticationFailedException();
         SessionUtils.setMemberSession(session, memberInfoDTO.getId());
     }
 }
