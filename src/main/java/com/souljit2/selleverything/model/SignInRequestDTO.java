@@ -17,7 +17,7 @@ public class SignInRequestDTO {
     @NotBlank(message = "ID를 입력해주세요.")
     private String memberId;
     @NonNull
-    @Pattern(regexp="[a-zA-Z1-9]{6,12}", message = "비밀번호는 영어와 숫자가 포함된 6~12자리 문자를 입력해주세요.")
+    @Pattern(regexp = "[a-zA-Z1-9]{6,12}", message = "비밀번호는 영어와 숫자가 포함된 6~12자리 문자를 입력해주세요.")
     private String memberPassword;
 
 }

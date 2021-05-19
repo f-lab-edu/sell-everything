@@ -27,8 +27,8 @@ public class AuthController {
 
     @PostMapping("/signIn")
     public ResponseEntity<MemberDTO> signIn(
-            @RequestBody @Valid SignInRequestDTO signInInfo,
-            HttpSession session) throws Exception  {
+        @RequestBody @Valid SignInRequestDTO signInInfo,
+        HttpSession session) throws Exception {
         sessionAuthService.signIn(signInInfo, session);
         return Responses.OK;
     }

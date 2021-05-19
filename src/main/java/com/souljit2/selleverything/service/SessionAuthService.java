@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 public interface SessionAuthService {
 
     public void signUp(MemberDTO newMemberInfo);
+
     public void signIn(SignInRequestDTO signInInfo, HttpSession session);
 
 }
