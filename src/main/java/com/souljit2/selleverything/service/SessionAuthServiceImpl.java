@@ -17,7 +17,8 @@ public class SessionAuthServiceImpl implements SessionAuthService {
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
-        String encryptedPassword = BCrypt.hashpw(newMemberInfo.getMemberPassword(), BCrypt.gensalt());
+        String encryptedPassword = BCrypt
+            .hashpw(newMemberInfo.getMemberPassword(), BCrypt.gensalt());
         newMemberInfo.setMemberPassword(encryptedPassword);
         memberService.insertMember(newMemberInfo);
     }
@@ -25,14 +26,16 @@ public class SessionAuthServiceImpl implements SessionAuthService {
     @Override
     public void signIn(SignInRequestDTO signInInfo, HttpSession session) {
         MemberDTO memberInfoDTO = memberService.getMemberInfo(signInInfo);
-        if(memberInfoDTO == null)
+        if (memberInfoDTO == null) {
             throw new AuthenticationFailedException();
+        }
         boolean isPasswordMatches = BCrypt.checkpw(
-                signInInfo.getMemberPassword(),
-                memberInfoDTO.getMemberPassword()
+            signInInfo.getMemberPassword(),
+            memberInfoDTO.getMemberPassword()
         );
-        if(!isPasswordMatches)
+        if (!isPasswordMatches) {
             throw new AuthenticationFailedException();
+        }
         SessionUtils.setMemberSession(session, memberInfoDTO.getId());
     }
 }
