@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.model;
 
+import com.souljit2.selleverything.annotation.Category;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -39,6 +40,7 @@ public class PostDTO {
 
     @NonNull
     @NotBlank
+    @Category
     private String postCategory;
 
     private LocalDateTime createdAt;
