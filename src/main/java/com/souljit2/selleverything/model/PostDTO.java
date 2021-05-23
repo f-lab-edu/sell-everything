@@ -2,7 +2,9 @@ package com.souljit2.selleverything.model;
 
 import com.souljit2.selleverything.annotation.Category;
 import java.time.LocalDateTime;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,6 +20,7 @@ public class PostDTO {
     private int id;
 
     @NonNull
+    @Min(1)
     private int memberIdFk;
 
     @NonNull
