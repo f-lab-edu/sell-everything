@@ -15,11 +15,11 @@ import lombok.ToString;
 public class CommentDTO {
 
     @NonNull
-    @Min(0)
+    @Min(1)
     private int memberIdFk;
 
     @NonNull
-    @Min(0)
+    @Min(1)
     private int postIdFk;
 
     @NonNull
