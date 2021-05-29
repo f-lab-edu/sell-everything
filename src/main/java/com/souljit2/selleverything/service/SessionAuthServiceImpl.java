@@ -3,17 +3,18 @@ package com.souljit2.selleverything.service;
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
-import com.souljit2.selleverything.utils.SessionUtils;
+import javax.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
-import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
 public class SessionAuthServiceImpl implements SessionAuthService {
 
     private MemberService memberService;
+
+    private SessionStorageService sessionStorageService;
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
@@ -33,9 +34,10 @@ public class SessionAuthServiceImpl implements SessionAuthService {
             signInInfo.getMemberPassword(),
             memberInfoDTO.getMemberPassword()
         );
-        if (!isPasswordMatches) {
-            throw new AuthenticationFailedException();
+        if (isPasswordMatches) {
+            sessionStorageService.setMemberSession(memberInfoDTO.getId(), session);
         }
-        SessionUtils.setMemberSession(session, memberInfoDTO.getId());
+        System.out.println(sessionStorageService.getMemberSession(session));
+        throw new AuthenticationFailedException();
     }
 }
