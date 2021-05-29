@@ -36,8 +36,8 @@ public class SessionAuthServiceImpl implements SessionAuthService {
         );
         if (isPasswordMatches) {
             sessionStorageService.setMemberSession(memberInfoDTO.getId(), session);
+        } else {
+            throw new AuthenticationFailedException();
         }
-        System.out.println(sessionStorageService.getMemberSession(session));
-        throw new AuthenticationFailedException();
     }
 }
