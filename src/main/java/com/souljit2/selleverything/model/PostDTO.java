@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.model;
 
+import com.souljit2.selleverything.post.PostCategory;
 import java.time.LocalDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -46,14 +47,5 @@ public class PostDTO {
 
     private LocalDateTime updatedAt;
 
-    private enum PostCategory {
-        CLOTHES,
-        INSTRUMENTS,
-        VEHICLES,
-        PHONES,
-        ACCESSORIES,
-        PROPS,
-        ETCS
-    }
 
 }
