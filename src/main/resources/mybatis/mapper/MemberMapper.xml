@@ -13,7 +13,16 @@
     </insert>
 
     <select id="getMemberInfo" resultType="com.souljit2.selleverything.model.MemberDTO">
-        SELECT id, memberPassword
+        SELECT id,
+               memberId,
+               memberPassword,
+               memberName,
+               memberNickname,
+               memberPhone,
+               membershipAgreementYn,
+               optionalInfoAgreementYn,
+               createdAt,
+               updatedAt
         FROM tb_member
         WHERE memberId = #{memberId}
     </select>
