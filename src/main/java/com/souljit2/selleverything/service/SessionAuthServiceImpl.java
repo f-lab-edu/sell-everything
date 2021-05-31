@@ -28,7 +28,7 @@ public class SessionAuthServiceImpl implements SessionAuthService {
     public void signIn(SignInRequestDTO signInInfo, HttpSession session) {
         MemberDTO memberInfoDTO = memberService.getMemberInfo(signInInfo);
         if (memberInfoDTO == null) {
-            throw new AuthenticationFailedException();
+            throw new AuthenticationFailedException("No member information");
         }
         boolean isPasswordMatches = BCrypt.checkpw(
             signInInfo.getMemberPassword(),
@@ -37,7 +37,7 @@ public class SessionAuthServiceImpl implements SessionAuthService {
         if (isPasswordMatches) {
             sessionStorageService.setMemberSession(memberInfoDTO.getId(), session);
         } else {
-            throw new AuthenticationFailedException();
+            throw new AuthenticationFailedException("Password mismatch");
         }
     }
 }
