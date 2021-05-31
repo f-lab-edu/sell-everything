@@ -14,14 +14,22 @@ public class SessionAuthServiceImpl implements SessionAuthService {
 
     private MemberService memberService;
 
-    private SessionStorageService sessionStorageService;
+    private final String member = "member";
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
-        String encryptedPassword = BCrypt
-            .hashpw(newMemberInfo.getMemberPassword(), BCrypt.gensalt());
-        newMemberInfo.setMemberPassword(encryptedPassword);
-        memberService.insertMember(newMemberInfo);
+        memberService.insertMember(new MemberDTO(
+            0,
+            newMemberInfo.getMemberId(),
+            BCrypt.hashpw(newMemberInfo.getMemberPassword(), BCrypt.gensalt()),
+            newMemberInfo.getMemberName(),
+            newMemberInfo.getMemberNickname(),
+            newMemberInfo.getMemberPhone(),
+            newMemberInfo.getMembershipAgreementYn(),
+            newMemberInfo.getOptionalInfoAgreementYn(),
+            null,
+            null
+        ));
     }
 
     @Override
@@ -35,7 +43,7 @@ public class SessionAuthServiceImpl implements SessionAuthService {
             memberInfoDTO.getMemberPassword()
         );
         if (isPasswordMatches) {
-            sessionStorageService.setMemberSession(memberInfoDTO.getId(), session);
+            session.setAttribute(member, memberInfoDTO.getId());
         } else {
             throw new AuthenticationFailedException("Password mismatch");
         }
