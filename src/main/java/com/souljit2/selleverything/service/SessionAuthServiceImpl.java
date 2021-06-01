@@ -14,7 +14,7 @@ public class SessionAuthServiceImpl implements SessionAuthService {
 
     private MemberService memberService;
 
-    private final String member = "member";
+    private static final String member = "member";
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
