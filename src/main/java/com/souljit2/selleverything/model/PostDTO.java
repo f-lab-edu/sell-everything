@@ -1,10 +1,9 @@
 package com.souljit2.selleverything.model;
 
-import com.souljit2.selleverything.annotation.Category;
+import com.souljit2.selleverything.post.PostCategory;
 import java.time.LocalDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,14 +41,11 @@ public class PostDTO {
     private String postItemName;
 
     @NonNull
-    @NotBlank
-    @Category
-    private String postCategory;
+    private PostCategory postCategory;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
 
-    public PostDTO() {
-    }
+
 }
