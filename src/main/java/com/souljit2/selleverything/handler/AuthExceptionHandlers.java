@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.handler;
 
+import com.souljit2.selleverything.auth.AuthController;
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -7,8 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ControllerAdvice
-public class ExceptionHandlers {
+@ControllerAdvice(assignableTypes = {AuthController.class})
+public class AuthExceptionHandlers {
 
     @ExceptionHandler(DuplicateKeyException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
