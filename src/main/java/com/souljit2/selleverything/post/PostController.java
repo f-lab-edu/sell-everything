@@ -12,7 +12,7 @@ public class PostController {
 
     PostService postService;
 
-    @GetMapping("/getPostDetail/{id}")
+    @GetMapping("/posts/{id}")
     public PostDTO getPostById(@PathVariable("id") int id) {
         return postService.getPostById(id);
     }
