@@ -17,4 +17,22 @@
         FROM tb_post
         WHERE id = #{id}
     </select>
+
+    <select id="getPosts" resultType="com.souljit2.selleverything.model.PostDTO">
+        SELECT id,
+               postTitle,
+               postContents,
+               postItemPrice,
+               postItemName,
+               postCategory,
+               createdAt,
+               updatedAt,
+               memberIdFk
+        FROM tb_post
+        WHERE id = #{id}
+           OR postTitle = #{postTitle}
+           OR postItemName = #{postItemName}
+           OR postCategory = #{postCategory}
+           OR memberIdFk = #{memberIdFk}
+    </select>
 </mapper>
