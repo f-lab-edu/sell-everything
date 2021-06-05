@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/apis/post")
+@RequestMapping("/apis/posts")
 public class PostController {
 
     PostService postService;
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public PostDTO getPostById(@PathVariable("id") int id) {
         return postService.getPostById(id);
     }
-
 }
