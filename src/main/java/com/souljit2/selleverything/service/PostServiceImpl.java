@@ -5,6 +5,9 @@ import com.souljit2.selleverything.model.PostDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 @AllArgsConstructor
 public class PostServiceImpl implements PostService {
@@ -16,4 +19,8 @@ public class PostServiceImpl implements PostService {
         return postMapper.getPostById(id);
     }
 
+    @Override
+    public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap) {
+        return postMapper.getPosts(queryMap);
+    }
 }
