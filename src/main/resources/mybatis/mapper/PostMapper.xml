@@ -14,7 +14,7 @@
                createdAt,
                updatedAt,
                memberIdFk
-        FROM tb_post
+        FROM post
         WHERE id = #{id}
     </select>
 
@@ -28,7 +28,7 @@
                createdAt,
                updatedAt,
                memberIdFk
-        FROM tb_post
+        FROM post
         WHERE id = #{id}
            OR postTitle = #{postTitle}
            OR postItemName = #{postItemName}
