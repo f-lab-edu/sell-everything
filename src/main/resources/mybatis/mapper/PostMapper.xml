@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.souljit2.selleverything.mapper.PostMapper">
+    <select id="getPostById" resultType="com.souljit2.selleverything.model.PostDTO">
+        SELECT id,
+               postTitle,
+               postContents,
+               postItemPrice,
+               postItemName,
+               postCategory,
+               createdAt,
+               updatedAt,
+               memberIdFk
+        FROM post
+        WHERE id = #{id}
+    </select>
+
+    <select id="getPosts" resultType="com.souljit2.selleverything.model.PostDTO">
+        SELECT id,
+               postTitle,
+               postContents,
+               postItemPrice,
+               postItemName,
+               postCategory,
+               createdAt,
+               updatedAt,
+               memberIdFk
+        FROM post
+        WHERE id = #{id}
+           OR postTitle = #{postTitle}
+           OR postItemName = #{postItemName}
+           OR postCategory = #{postCategory}
+           OR memberIdFk = #{memberIdFk}
+    </select>
+</mapper>
