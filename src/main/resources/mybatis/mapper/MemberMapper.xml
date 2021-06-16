@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.souljit2.selleverything.mapper.MemberMapper">
     <insert id="insertMember" parameterType="com.souljit2.selleverything.model.MemberDTO">
-        INSERT INTO member
-        (memberId, memberPassword, memberName, memberNickname, memberPhone, membershipAgreementYn,
-         optionalInfoAgreementYn)
-        VALUES (#{memberId}, #{memberPassword}, #{memberName}, #{memberNickname}, #{memberPhone},
-                #{membershipAgreementYn}, #{optionalInfoAgreementYn})
+        INSERT
+        INTO member (memberId,
+                     memberPassword,
+                     memberName,
+                     memberNickname,
+                     memberPhone,
+                     membershipAgreementYn,
+                     optionalInfoAgreementYn)
+        VALUES (#{memberId},
+                #{memberPassword},
+                #{memberName},
+                #{memberNickname},
+                #{memberPhone},
+                #{membershipAgreementYn},
+                #{optionalInfoAgreementYn})
     </insert>
 
     <select id="getMemberInfo" resultType="com.souljit2.selleverything.model.MemberDTO">
