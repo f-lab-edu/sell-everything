@@ -1,18 +1,18 @@
 package com.souljit2.selleverything.model;
 
 import com.souljit2.selleverything.post.PostCategory;
+
 import java.time.LocalDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
+
+import lombok.*;
 
 @Getter
 @ToString
 @EqualsAndHashCode
+@Builder
 public class PostDTO {
 
     @NonNull
