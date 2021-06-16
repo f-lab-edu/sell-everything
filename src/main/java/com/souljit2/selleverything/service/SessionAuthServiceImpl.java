@@ -3,7 +3,9 @@ package com.souljit2.selleverything.service;
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
+
 import javax.servlet.http.HttpSession;
+
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -56,4 +58,10 @@ public class SessionAuthServiceImpl implements SessionAuthService {
             );
         }
     }
+
+    @Override
+    public int getMemberIdBySession(HttpSession httpSession) {
+        return (int) httpSession.getAttribute(member);
+    }
+
 }
