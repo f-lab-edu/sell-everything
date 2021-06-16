@@ -13,4 +13,6 @@ public interface PostMapper {
 
     public List<PostDTO> getPosts(Map<String, String> columnConditions);
 
+    public void createPost(PostDTO newPost);
+
 }

@@ -2,9 +2,12 @@ package com.souljit2.selleverything.post;
 
 import com.souljit2.selleverything.model.PostDTO;
 import com.souljit2.selleverything.service.PostService;
+import com.souljit2.selleverything.service.SessionAuthService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +26,12 @@ public class PostController {
     @GetMapping("")
     public List<PostDTO> getPostsByQueryString(@RequestParam Map<String, String> queryMap) {
         return postService.getPostsByQueryString(queryMap);
+    }
+
+    @PostMapping("")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void createPost(@RequestBody PostDTO newPost, HttpSession httpSession) {
+        postService.createPost(newPost, httpSession);
     }
 
 }
