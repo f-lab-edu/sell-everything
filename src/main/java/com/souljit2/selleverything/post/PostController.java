@@ -23,12 +23,12 @@ public class PostController {
         return postService.getPostById(id);
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<PostDTO> getPostsByQueryString(@RequestParam Map<String, String> queryMap) {
         return postService.getPostsByQueryString(queryMap);
     }
 
-    @PostMapping("")
+    @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public void createPost(@RequestBody PostDTO newPost, HttpSession httpSession) {
         postService.createPost(newPost, httpSession);
