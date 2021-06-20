@@ -12,6 +12,6 @@ public interface PostService {
 
     public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap);
 
-    public void createPost(PostDTO newPost, HttpSession httpSession);
+    public void createPost(PostDTO newPost);
 
 }

@@ -2,7 +2,6 @@ package com.souljit2.selleverything.post;
 
 import com.souljit2.selleverything.model.PostDTO;
 import com.souljit2.selleverything.service.PostService;
-import com.souljit2.selleverything.service.SessionAuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +29,8 @@ public class PostController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void createPost(@RequestBody PostDTO newPost, HttpSession httpSession) {
-        postService.createPost(newPost, httpSession);
+    public void createPost(@RequestBody PostDTO newPost) {
+        postService.createPost(newPost);
     }
 
 }

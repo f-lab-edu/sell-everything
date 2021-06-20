@@ -15,7 +15,7 @@ public class PostServiceImpl implements PostService {
 
     PostMapper postMapper;
 
-    SessionAuthService sessionAuthService;
+    AuthService authService;
 
     @Override
     public PostDTO getPostById(int id) {
@@ -28,8 +28,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void createPost(PostDTO newPost, HttpSession httpSession) {
-        int memberIdBySession = sessionAuthService.getMemberIdBySession(httpSession);
+    public void createPost(PostDTO newPost) {
+        int memberIdBySession = authService.getRequestMemberId();
         postMapper.createPost(PostDTO.builder()
             .postTitle(newPost.getPostTitle())
             .postContents(newPost.getPostContents())
