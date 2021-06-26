@@ -18,9 +18,6 @@ public class PostDTO {
     @NonNull
     private int id;
 
-    @NonNull
-    @Min(1)
-    private int memberIdFk;
 
     @NonNull
     @NotBlank
@@ -47,5 +44,8 @@ public class PostDTO {
 
     private LocalDateTime updatedAt;
 
+    @NonNull
+    @Min(1)
+    private int memberIdFk;
 
 }
