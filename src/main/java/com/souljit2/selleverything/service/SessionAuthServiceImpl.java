@@ -4,11 +4,11 @@ import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
 
-import com.souljit2.selleverything.util.SessionUtils;
-
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +18,7 @@ public class SessionAuthServiceImpl implements AuthService {
 
     private static final String member = "member";
 
+    private HttpSession session;
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
@@ -50,7 +51,7 @@ public class SessionAuthServiceImpl implements AuthService {
             memberInfoDTO.getMemberPassword()
         );
         if (isPasswordMatches) {
-            SessionUtils.setAttribute(member, memberInfoDTO.getId());
+            session.setAttribute(member, memberInfoDTO.getId());
         } else {
             throw new AuthenticationFailedException(
                 "Password mismatch for "
@@ -62,8 +63,7 @@ public class SessionAuthServiceImpl implements AuthService {
 
     @Override
     public int getRequestMemberId() {
-        return (int) SessionUtils
-            .getAttribute(member);
+        return (int) session.getAttribute(member);
     }
 
 
