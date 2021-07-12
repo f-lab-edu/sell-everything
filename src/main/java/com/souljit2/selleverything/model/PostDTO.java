@@ -13,11 +13,12 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostDTO {
 
     @NonNull
     private int id;
-
 
     @NonNull
     @NotBlank
