@@ -35,4 +35,20 @@
            OR postCategory = #{postCategory}
            OR memberIdFk = #{memberIdFk}
     </select>
+
+    <insert id="createPost" parameterType="com.souljit2.selleverything.model.PostDTO">
+        INSERT
+        INTO post (postTitle,
+                   postContents,
+                   postItemPrice,
+                   postItemName,
+                   postCategory,
+                   memberIdFk)
+        VALUES (#{postTitle},
+                #{postContents},
+                #{postItemPrice},
+                #{postItemName},
+                #{postCategory},
+                #{memberIdFk})
+    </insert>
 </mapper>

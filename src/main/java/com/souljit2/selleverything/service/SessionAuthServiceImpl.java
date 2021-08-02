@@ -3,18 +3,22 @@ package com.souljit2.selleverything.service;
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
-import javax.servlet.http.HttpSession;
+
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 @Service
 @AllArgsConstructor
-public class SessionAuthServiceImpl implements SessionAuthService {
+public class SessionAuthServiceImpl implements AuthService {
 
     private MemberService memberService;
 
     private static final String member = "member";
+
+    private HttpSession session;
 
     @Override
     public void signUp(MemberDTO newMemberInfo) {
@@ -33,7 +37,7 @@ public class SessionAuthServiceImpl implements SessionAuthService {
     }
 
     @Override
-    public void signIn(SignInRequestDTO signInInfo, HttpSession session) {
+    public void signIn(SignInRequestDTO signInInfo) {
         MemberDTO memberInfoDTO = memberService.getMemberInfo(signInInfo);
         if (memberInfoDTO == null) {
             throw new AuthenticationFailedException(
@@ -56,4 +60,11 @@ public class SessionAuthServiceImpl implements SessionAuthService {
             );
         }
     }
+
+    @Override
+    public int getRequestMemberId() {
+        return (int) session.getAttribute(member);
+    }
+
+
 }
