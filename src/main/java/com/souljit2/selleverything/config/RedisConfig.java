@@ -47,11 +47,12 @@ public class RedisConfig {
             );
 
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
-        redisCacheConfigurationMap.put(CacheNames.MULTIPLE_POST, redisCacheConfiguration.entryTtl(Duration.ofMinutes(5)));
-
+        redisCacheConfigurationMap
+            .put(CacheNames.MULTIPLE_POST, redisCacheConfiguration.entryTtl(Duration.ofMinutes(5)));
 
         return RedisCacheManager.RedisCacheManagerBuilder
             .fromConnectionFactory(redisConnectionFactory())
+            .withInitialCacheConfigurations(redisCacheConfigurationMap)
             .cacheDefaults(redisCacheConfiguration)
             .build();
 
