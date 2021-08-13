@@ -1,7 +1,10 @@
 package com.souljit2.selleverything.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.souljit2.selleverything.constants.CacheNames;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +15,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @Configuration
@@ -39,15 +41,14 @@ public class RedisConfig {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration
             .defaultCacheConfig()
             .disableCachingNullValues()
-            .entryTtl(Duration.ofMinutes(2))
-            .serializeKeysWith(
-                RedisSerializationContext.SerializationPair
-                    .fromSerializer(new StringRedisSerializer())
-            )
             .serializeValuesWith(
                 RedisSerializationContext.SerializationPair
                     .fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper))
             );
+
+        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+        redisCacheConfigurationMap.put(CacheNames.MULTIPLE_POST, redisCacheConfiguration.entryTtl(Duration.ofMinutes(5)));
+
 
         return RedisCacheManager.RedisCacheManagerBuilder
             .fromConnectionFactory(redisConnectionFactory())

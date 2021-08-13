@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.service;
 
+import com.souljit2.selleverything.constants.CacheNames;
 import com.souljit2.selleverything.mapper.PostMapper;
 import com.souljit2.selleverything.model.PostDTO;
 import lombok.AllArgsConstructor;
@@ -23,13 +24,13 @@ public class PostServiceImpl implements PostService {
         return postMapper.getPostById(id);
     }
 
-    @Cacheable(value = "MULTIPLE_POST")
+    @Cacheable(value = CacheNames.MULTIPLE_POST)
     @Override
     public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap) {
         return postMapper.getPosts(queryMap);
     }
 
-    @CacheEvict(value = "MULTIPLE_POST", allEntries = true)
+    @CacheEvict(value = CacheNames.MULTIPLE_POST, allEntries = true)
     @Override
     public void createPost(PostDTO newPost) {
         int memberIdBySession = authService.getRequestMemberId();
