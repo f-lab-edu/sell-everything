@@ -32,4 +32,9 @@ public class PostController {
         postService.createPost(newPost);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deletePostById(@PathVariable("id") int id) {
+        postService.deletePostById(id);
+    }
 }

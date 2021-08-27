@@ -51,4 +51,11 @@
                 #{postCategory},
                 #{memberIdFk})
     </insert>
+
+    <delete id="deletePostById" parameterType="com.souljit2.selleverything.model.PostDTO">
+        DELETE
+        FROM post
+        WHERE id = #{id}
+    </delete>
+
 </mapper>

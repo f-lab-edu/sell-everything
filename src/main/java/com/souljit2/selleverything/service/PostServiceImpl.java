@@ -44,4 +44,10 @@ public class PostServiceImpl implements PostService {
             .build()
         );
     }
+
+    @CacheEvict(value = CacheNames.POST, allEntries = true)
+    @Override
+    public void deletePostById(int id) {
+        postMapper.deletePostById(id);
+    }
 }
