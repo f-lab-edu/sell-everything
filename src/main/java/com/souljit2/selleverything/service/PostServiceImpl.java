@@ -24,13 +24,13 @@ public class PostServiceImpl implements PostService {
         return postMapper.getPostById(id);
     }
 
-    @Cacheable(value = CacheNames.MULTIPLE_POST)
+    @Cacheable(value = CacheNames.POST)
     @Override
     public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap) {
         return postMapper.getPosts(queryMap);
     }
 
-    @CacheEvict(value = CacheNames.MULTIPLE_POST, allEntries = true)
+    @CacheEvict(value = CacheNames.POST, allEntries = true)
     @Override
     public void createPost(PostDTO newPost) {
         int memberIdBySession = authService.getRequestMemberId();
