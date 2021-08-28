@@ -51,7 +51,7 @@ public class SessionAuthServiceImpl implements AuthService {
             memberInfoDTO.getMemberPassword()
         );
         if (isPasswordMatches) {
-            session.setAttribute(DomainNames.member, memberInfoDTO.getId());
+            session.setAttribute(DomainNames.MEMBER, memberInfoDTO.getId());
         } else {
             throw new AuthenticationFailedException(
                 "Password mismatch for "
@@ -63,7 +63,7 @@ public class SessionAuthServiceImpl implements AuthService {
 
     @Override
     public int getRequestMemberId() {
-        return (int) session.getAttribute(DomainNames.member);
+        return (int) session.getAttribute(DomainNames.MEMBER);
     }
 
 

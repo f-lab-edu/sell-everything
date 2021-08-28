@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.interceptors;
 
+import com.souljit2.selleverything.constants.DomainNames;
 import org.springframework.stereotype.Component;
 import org.springframework.web.HttpSessionRequiredException;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,13 +12,11 @@ import javax.servlet.http.HttpSession;
 @Component
 public class SessionCheckInterceptor implements HandlerInterceptor {
 
-    private static final String member = "member";
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
         Object handler) throws Exception {
         HttpSession session = request.getSession();
-        Integer id = (Integer) session.getAttribute(member);
+        Integer id = (Integer) session.getAttribute(DomainNames.MEMBER);
         if (id == null) {
             throw new HttpSessionRequiredException(
                 "There is no session information in the request header. "
