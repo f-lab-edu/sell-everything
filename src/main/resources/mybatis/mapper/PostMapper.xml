@@ -51,4 +51,12 @@
                 #{postCategory},
                 #{memberIdFk})
     </insert>
+
+    <delete id="deletePostById">
+        DELETE
+        FROM post
+        WHERE id = #{id}
+          AND memberIdFk = #{sessionMemberId}
+    </delete>
+
 </mapper>

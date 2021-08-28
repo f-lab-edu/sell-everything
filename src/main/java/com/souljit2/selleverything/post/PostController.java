@@ -27,9 +27,14 @@ public class PostController {
     }
 
     @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void createPost(@RequestBody PostDTO newPost) {
         postService.createPost(newPost);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deletePostById(@PathVariable("id") int id) {
+        postService.deletePostById(id);
+    }
 }

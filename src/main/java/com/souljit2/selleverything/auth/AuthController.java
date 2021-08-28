@@ -3,7 +3,6 @@ package com.souljit2.selleverything.auth;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
 import com.souljit2.selleverything.service.AuthService;
-import javax.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
