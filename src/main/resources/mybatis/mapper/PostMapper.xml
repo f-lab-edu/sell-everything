@@ -56,7 +56,7 @@
         DELETE
         FROM post
         WHERE id = #{id}
-          AND memberIdFk = #{memberIdFk}
+          AND memberIdFk = #{sessionMemberId}
     </delete>
 
 </mapper>
