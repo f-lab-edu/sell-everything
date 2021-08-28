@@ -15,5 +15,5 @@ public interface PostMapper {
 
     public void createPost(PostDTO newPost);
 
-    public void deletePostById(int id);
+    public void deletePostById(int id, int memberIdFk);
 }

@@ -52,10 +52,11 @@
                 #{memberIdFk})
     </insert>
 
-    <delete id="deletePostById" parameterType="com.souljit2.selleverything.model.PostDTO">
+    <delete id="deletePostById">
         DELETE
         FROM post
         WHERE id = #{id}
+          AND memberIdFk = #{memberIdFk}
     </delete>
 
 </mapper>

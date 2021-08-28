@@ -1,6 +1,7 @@
 package com.souljit2.selleverything.service;
 
 import com.souljit2.selleverything.constants.CacheNames;
+import com.souljit2.selleverything.constants.DomainNames;
 import com.souljit2.selleverything.mapper.PostMapper;
 import com.souljit2.selleverything.model.PostDTO;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class PostServiceImpl implements PostService {
     PostMapper postMapper;
 
     AuthService authService;
+
+    SessionAuthServiceImpl sessionAuthService;
 
     @Override
     public PostDTO getPostById(int id) {
@@ -48,6 +52,7 @@ public class PostServiceImpl implements PostService {
     @CacheEvict(value = CacheNames.POST, allEntries = true)
     @Override
     public void deletePostById(int id) {
-        postMapper.deletePostById(id);
+        int sessionMemberId = sessionAuthService.getRequestMemberId();
+        postMapper.deletePostById(id, sessionMemberId);
     }
 }

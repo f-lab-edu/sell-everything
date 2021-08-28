@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.service;
 
+import com.souljit2.selleverything.constants.DomainNames;
 import com.souljit2.selleverything.exception.AuthenticationFailedException;
 import com.souljit2.selleverything.model.MemberDTO;
 import com.souljit2.selleverything.model.SignInRequestDTO;
@@ -16,7 +17,6 @@ public class SessionAuthServiceImpl implements AuthService {
 
     private MemberService memberService;
 
-    private static final String member = "member";
 
     private HttpSession session;
 
@@ -51,7 +51,7 @@ public class SessionAuthServiceImpl implements AuthService {
             memberInfoDTO.getMemberPassword()
         );
         if (isPasswordMatches) {
-            session.setAttribute(member, memberInfoDTO.getId());
+            session.setAttribute(DomainNames.member, memberInfoDTO.getId());
         } else {
             throw new AuthenticationFailedException(
                 "Password mismatch for "
@@ -63,7 +63,7 @@ public class SessionAuthServiceImpl implements AuthService {
 
     @Override
     public int getRequestMemberId() {
-        return (int) session.getAttribute(member);
+        return (int) session.getAttribute(DomainNames.member);
     }
 
 

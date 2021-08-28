@@ -15,6 +15,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(sessionCheckInterceptor)
-                .excludePathPatterns("/apis/auth/**");
+            .excludePathPatterns("/apis/auth/**");
     }
 }
