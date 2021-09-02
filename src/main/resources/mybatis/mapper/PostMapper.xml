@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.souljit2.selleverything.mapper.PostMapper">
-    <select id="getPostById" resultType="com.souljit2.selleverything.model.PostDTO">
+<mapper namespace="com.souljit2.selleverything.domain.post.mapper.PostMapper">
+    <select id="getPostById" resultType="com.souljit2.selleverything.domain.post.model.PostDTO">
         SELECT id,
                postTitle,
                postContents,
@@ -18,7 +18,7 @@
         WHERE id = #{id}
     </select>
 
-    <select id="getPosts" resultType="com.souljit2.selleverything.model.PostDTO">
+    <select id="getPosts" resultType="com.souljit2.selleverything.domain.post.model.PostDTO">
         SELECT id,
                postTitle,
                postContents,
@@ -36,7 +36,7 @@
            OR memberIdFk = #{memberIdFk}
     </select>
 
-    <insert id="createPost" parameterType="com.souljit2.selleverything.model.PostDTO">
+    <insert id="createPost" parameterType="com.souljit2.selleverything.domain.post.model.PostDTO">
         INSERT
         INTO post (postTitle,
                    postContents,
