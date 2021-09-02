@@ -52,6 +52,17 @@
                 #{memberIdFk})
     </insert>
 
+    <update id="updatePostById">
+        UPDATE post
+        SET postTitle     = #{newPost.postTitle},
+            postContents  = #{newPost.postContents},
+            postItemPrice = #{newPost.postItemPrice},
+            postItemName  = #{newPost.postItemName},
+            postCategory  = #{newPost.postCategory}
+        WHERE id = #{id}
+          AND memberIdFk = #{sessionMemberId}
+    </update>
+
     <delete id="deletePostById">
         DELETE
         FROM post
