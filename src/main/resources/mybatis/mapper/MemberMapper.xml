@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.souljit2.selleverything.mapper.MemberMapper">
-    <insert id="insertMember" parameterType="com.souljit2.selleverything.model.MemberDTO">
+<mapper namespace="com.souljit2.selleverything.domain.member.mapper.MemberMapper">
+    <insert id="insertMember" parameterType="com.souljit2.selleverything.domain.member.model.MemberDTO">
         INSERT
         INTO member (memberId,
                      memberPassword,
@@ -22,7 +22,7 @@
                 #{optionalInfoAgreementYn})
     </insert>
 
-    <select id="getMemberInfo" resultType="com.souljit2.selleverything.model.MemberDTO">
+    <select id="getMemberInfo" resultType="com.souljit2.selleverything.domain.member.model.MemberDTO">
         SELECT id,
                memberId,
                memberPassword,
