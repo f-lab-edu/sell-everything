@@ -32,6 +32,12 @@ public class PostController {
         postService.createPost(newPost);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void updatePost(@PathVariable int id, @RequestBody PostDTO newPost) {
+        postService.updatePostById(id, newPost);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deletePostById(@PathVariable("id") int id) {

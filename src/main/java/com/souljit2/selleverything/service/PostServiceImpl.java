@@ -51,6 +51,13 @@ public class PostServiceImpl implements PostService {
 
     @CacheEvict(value = CacheNames.POST, allEntries = true)
     @Override
+    public void updatePostById(int id, PostDTO newPost) {
+        int sessionMemberId = sessionAuthService.getRequestMemberId();
+        postMapper.updatePostById(id, sessionMemberId, newPost);
+    }
+
+    @CacheEvict(value = CacheNames.POST, allEntries = true)
+    @Override
     public void deletePostById(int id) {
         int sessionMemberId = sessionAuthService.getRequestMemberId();
         postMapper.deletePostById(id, sessionMemberId);
