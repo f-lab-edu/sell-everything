@@ -18,4 +18,9 @@ public interface PostMapper {
     public void deletePostById(int id, int sessionMemberId);
 
     public void updatePostById(int id, int sessionMemberId, PostDTO newPost);
+
+    public void increasePostLikeCountById(int id);
+
+    public void decreasePostLikeCountById(int id);
+
 }

@@ -62,4 +62,14 @@ public class PostServiceImpl implements PostService {
         int sessionMemberId = sessionAuthService.getRequestMemberId();
         postMapper.deletePostById(id, sessionMemberId);
     }
+
+    @Override
+    public void increasePostLikeCount(int postId) {
+        postMapper.increasePostLikeCountById(postId);
+    }
+
+    @Override
+    public void decreasePostLikeCount(int postId) {
+        postMapper.decreasePostLikeCountById(postId);
+    }
 }

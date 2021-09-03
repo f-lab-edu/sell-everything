@@ -70,4 +70,16 @@
           AND memberIdFk = #{sessionMemberId}
     </delete>
 
+    <update id="increasePostLikeCountById">
+        UPDATE post
+        SET likeCount = CASE WHEN likeCount >= 0 THEN likeCount + 1 ELSE 0 END
+        WHERE id = #{id}
+    </update>
+
+    <update id="decreasePostLikeCountById">
+        UPDATE post
+        SET likeCount = CASE WHEN likeCount > 0 THEN likeCount - 1 ELSE 0 END
+        WHERE id = #{id}
+    </update>
+
 </mapper>

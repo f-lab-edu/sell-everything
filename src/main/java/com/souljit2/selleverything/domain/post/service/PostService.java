@@ -16,4 +16,9 @@ public interface PostService {
     public void updatePostById(int id, PostDTO newPost);
 
     public void deletePostById(int id);
+
+    public void increasePostLikeCount(int postId);
+
+    public void decreasePostLikeCount(int postId);
+
 }
