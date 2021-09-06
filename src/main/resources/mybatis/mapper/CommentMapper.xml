@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.souljit2.selleverything.domain.comment.mapper.CommentMapper">
-    <select id="findCommentsByPostId" resultType="com.souljit2.selleverything.domain.comment.model.CommentVO">
+    <select id="findCommentsByPostId"
+        resultType="com.souljit2.selleverything.domain.comment.model.CommentVO">
         SELECT m.id as memberIdFk,
                m.memberNickname,
                c.commentContents,
@@ -16,7 +17,7 @@
     </select>
 
     <insert id="insertComment"
-            parameterType="com.souljit2.selleverything.domain.comment.model.CommentDTO">
+        parameterType="com.souljit2.selleverything.domain.comment.model.CommentDTO">
         INSERT INTO comment (memberIdFk,
                              postIdFk,
                              commentContents)
@@ -25,6 +26,11 @@
                 #{commentContents})
     </insert>
 
+    <update id="updateCommentById">
+        UPDATE comment
+        SET commentContents = #{newComment}
+        WHERE id = #{id}
+    </update>
     <delete id="deleteCommentById">
         DELETE
         FROM comment

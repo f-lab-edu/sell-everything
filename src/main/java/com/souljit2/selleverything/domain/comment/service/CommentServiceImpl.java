@@ -43,6 +43,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public void updateCommentById(int id, String newComment) {
+        commentMapper.updateCommentById(id, newComment);
+    }
+
+    @Override
     public void deleteCommentById(int id) {
         int sessionMemberId = sessionAuthService.getRequestMemberId();
         commentMapper.deleteCommentById(id, sessionMemberId);

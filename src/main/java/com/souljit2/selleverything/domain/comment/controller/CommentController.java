@@ -29,6 +29,12 @@ public class CommentController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/{id}")
+    public void updateCommentById(@PathVariable int id, @RequestParam String commentContents) {
+        commentService.updateCommentById(id, commentContents);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteCommentById(@PathVariable int id) {
         commentService.deleteCommentById(id);
