@@ -39,12 +39,16 @@ public class PostDTO {
     @NonNull
     private PostCategory postCategory;
 
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
     @NonNull
     @Min(1)
     private int memberIdFk;
+
+    @NonNull
+    @Min(0)
+    private int likeCount;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 
 }
