@@ -41,4 +41,10 @@ public class CommentServiceImpl implements CommentService {
             newComment.getPostIdFk()
         );
     }
+
+    @Override
+    public void deleteCommentById(int id) {
+        int sessionMemberId = sessionAuthService.getRequestMemberId();
+        commentMapper.deleteCommentById(id, sessionMemberId);
+    }
 }

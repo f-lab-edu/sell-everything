@@ -13,4 +13,6 @@ public interface CommentMapper {
 
     public List<CommentVO> findCommentsByPostId(int postId);
 
+    public void deleteCommentById(int id, int memberIdFk);
+
 }

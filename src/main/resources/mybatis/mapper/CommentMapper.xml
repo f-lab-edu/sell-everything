@@ -24,4 +24,11 @@
                 #{postIdFk},
                 #{commentContents})
     </insert>
+
+    <delete id="deleteCommentById">
+        DELETE
+        FROM comment
+        WHERE id = #{id}
+          AND memberIdFk = #{memberIdFk}
+    </delete>
 </mapper>

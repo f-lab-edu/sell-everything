@@ -11,4 +11,6 @@ public interface CommentService {
 
     public void createComment(CommentDTO postId);
 
+    public void deleteCommentById(int id);
+
 }
