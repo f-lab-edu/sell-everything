@@ -47,6 +47,10 @@ public class PostDTO {
     @Min(0)
     private int likeCount;
 
+    @NonNull
+    @Min(0)
+    private int commentCount;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;

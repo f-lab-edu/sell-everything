@@ -23,4 +23,8 @@ public interface PostMapper {
 
     public void decreasePostLikeCountById(int id);
 
+    public void increasePostCommentCountById(int id);
+
+    public void decreasePostCommentCountById(int id);
+
 }

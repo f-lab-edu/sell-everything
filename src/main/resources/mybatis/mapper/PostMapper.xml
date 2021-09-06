@@ -12,6 +12,7 @@
                postItemName,
                postCategory,
                likeCount,
+               commentCount,
                createdAt,
                updatedAt,
                memberIdFk
@@ -26,6 +27,8 @@
                postItemPrice,
                postItemName,
                postCategory,
+               likeCount,
+               commentCount,
                createdAt,
                updatedAt,
                memberIdFk
@@ -80,6 +83,18 @@
     <update id="decreasePostLikeCountById">
         UPDATE post
         SET likeCount = CASE WHEN likeCount > 0 THEN likeCount - 1 ELSE 0 END
+        WHERE id = #{id}
+    </update>
+
+    <update id="increasePostCommentCountById">
+        UPDATE post
+        SET commentCount = CASE WHEN commentCount >= 0 THEN commentCount + 1 ELSE 0 END
+        WHERE id = #{id}
+    </update>
+
+    <update id="decreasePostCommentCountById">
+        UPDATE post
+        SET commentCount = CASE WHEN commentCount > 0 THEN commentCount - 1 ELSE 0 END
         WHERE id = #{id}
     </update>
 
