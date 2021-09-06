@@ -11,6 +11,7 @@
                postItemPrice,
                postItemName,
                postCategory,
+               likeCount,
                createdAt,
                updatedAt,
                memberIdFk
