@@ -1,8 +1,10 @@
 package com.souljit2.selleverything.domain.like.service;
 
 import com.souljit2.selleverything.domain.like.mapper.LikeMapper;
+import com.souljit2.selleverything.domain.like.model.LikeVO;
 import com.souljit2.selleverything.domain.member.service.SessionAuthServiceImpl;
 import com.souljit2.selleverything.domain.post.mapper.PostMapper;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,4 +35,8 @@ public class LikeServiceImpl implements LikeService {
         postMapper.decreasePostLikeCountById(postId);
     }
 
+    @Override
+    public List<LikeVO> getLikesByPostId(int postId) {
+        return likeMapper.findLikesById(postId);
+    }
 }
