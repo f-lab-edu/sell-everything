@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import lombok.EqualsAndHashCode;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.ToString;
 
 @Getter
-@ToString
-@EqualsAndHashCode
+@Builder
+@AllArgsConstructor
 public class CommentDTO {
 
     @NonNull
