@@ -25,7 +25,7 @@
 - Jenkins
 
 ## 🤔 프로젝트 진행 중 고민한 Technical Issues
-1. [분산 서버 세션 관리를 위한 기술 선택기](https://souljit2.tistory.com/71)
+1. [분산 서버 환경의 세션 정합성 관리](https://souljit2.tistory.com/71)
 
 
 ## 📜 Wiki
