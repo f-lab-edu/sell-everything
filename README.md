@@ -66,6 +66,7 @@
 
 ## 🤔 프로젝트 진행 중 고민한 Technical Issues
 1. [분산 서버 환경의 세션 정합성 관리](https://souljit2.tistory.com/71)
+2. [Redis 캐싱을 통한 읽기 성능 향상 작업](https://souljit2.tistory.com/72)
 
 <br/>
 
