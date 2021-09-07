@@ -54,10 +54,12 @@
 <br/>
 
 ## 🌐 기술 및 개발 환경
-- Spring Boot
 - IntelliJ
+- Spring Boot
+- MySQL
 - MyBatis
 - Redis
+- JUnit
 - Jenkins
 
 <br/>
