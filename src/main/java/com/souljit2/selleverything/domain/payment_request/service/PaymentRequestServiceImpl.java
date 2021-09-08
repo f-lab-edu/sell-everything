@@ -3,8 +3,10 @@ package com.souljit2.selleverything.domain.payment_request.service;
 import com.souljit2.selleverything.domain.member.service.AuthService;
 import com.souljit2.selleverything.domain.payment_request.mapper.PaymentRequestMapper;
 import com.souljit2.selleverything.domain.payment_request.model.PaymentRequestDTO;
+import com.souljit2.selleverything.global.constants.CacheNames;
 import java.sql.SQLIntegrityConstraintViolationException;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class PaymentRequestServiceImpl implements PaymentRequestService {
     private AuthService authService;
 
     @Override
+    @CacheEvict(value = CacheNames.POST)
     public void createPaymentRequest(int postId) {
         int memberId = authService.getRequestMemberId();
         try {
@@ -34,6 +37,7 @@ public class PaymentRequestServiceImpl implements PaymentRequestService {
     }
 
     @Override
+    @CacheEvict(value = CacheNames.POST)
     public void deletePurchaseRequestById(int id) {
         paymentRequestMapper.deletePurchaseRequestById(id);
     }

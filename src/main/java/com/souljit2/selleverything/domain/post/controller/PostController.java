@@ -1,6 +1,7 @@
 package com.souljit2.selleverything.domain.post.controller;
 
 import com.souljit2.selleverything.domain.post.model.PostDTO;
+import com.souljit2.selleverything.domain.post.model.PostVO;
 import com.souljit2.selleverything.domain.post.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,12 @@ public class PostController {
     PostService postService;
 
     @GetMapping("/{id}")
-    public PostDTO getPostById(@PathVariable("id") int id) {
+    public PostVO getPostById(@PathVariable("id") int id) {
         return postService.getPostById(id);
     }
 
     @GetMapping
-    public List<PostDTO> getPostsByQueryString(@RequestParam Map<String, String> queryMap) {
+    public List<PostVO> getPostsByQueryString(@RequestParam Map<String, String> queryMap) {
         return postService.getPostsByQueryString(queryMap);
     }
 

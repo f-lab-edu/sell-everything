@@ -2,14 +2,15 @@ package com.souljit2.selleverything.domain.post.service;
 
 import com.souljit2.selleverything.domain.post.model.PostDTO;
 
+import com.souljit2.selleverything.domain.post.model.PostVO;
 import java.util.List;
 import java.util.Map;
 
 public interface PostService {
 
-    public PostDTO getPostById(int id);
+    public PostVO getPostById(int id);
 
-    public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap);
+    public List<PostVO> getPostsByQueryString(Map<String, String> queryMap);
 
     public void createPost(PostDTO newPost);
 
