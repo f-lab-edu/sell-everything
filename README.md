@@ -56,6 +56,7 @@
 ## 🌐 기술 및 개발 환경
 - IntelliJ
 - Spring Boot
+- Maven
 - MySQL
 - MyBatis
 - Redis
