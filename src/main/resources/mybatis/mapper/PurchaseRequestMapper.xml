@@ -3,10 +3,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.souljit2.selleverything.domain.payment_request.mapper.PaymentRequestMapper">
+<mapper namespace="com.souljit2.selleverything.domain.purchase_request.mapper.PurchaseRequestMapper">
 
     <insert id="insertPurchaseRequest"
-        parameterType="com.souljit2.selleverything.domain.payment_request.model.PaymentRequestDTO">
+        parameterType="com.souljit2.selleverything.domain.purchase_request.model.PurchaseRequestDTO">
         INSERT INTO purchase_request (postIdFk,
                                       memberIdFk)
         VALUES (#{postIdFk},

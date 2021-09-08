@@ -1,4 +1,4 @@
-package com.souljit2.selleverything.domain.payment_request.model;
+package com.souljit2.selleverything.domain.purchase_request.model;
 
 import javax.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NonNull;
 
 @AllArgsConstructor
 @Getter
-public class PaymentRequestDTO {
+public class PurchaseRequestDTO {
 
     @NonNull
     @Min(1)

@@ -1,14 +1,14 @@
 package com.souljit2.selleverything.global.handler;
 
-import com.souljit2.selleverything.domain.payment_request.controller.PaymentRequestController;
+import com.souljit2.selleverything.domain.purchase_request.controller.PurchaseRequestController;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ControllerAdvice(assignableTypes = {PaymentRequestController.class})
-public class PaymentRequestExceptionHandler {
+@ControllerAdvice(assignableTypes = {PurchaseRequestController.class})
+public class PurchaseRequestExceptionHandler {
 
     @ExceptionHandler(DuplicateKeyException.class)
     @ResponseStatus(HttpStatus.CONFLICT)

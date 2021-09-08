@@ -1,8 +1,8 @@
-package com.souljit2.selleverything.domain.payment_request.service;
+package com.souljit2.selleverything.domain.purchase_request.service;
 
 import com.souljit2.selleverything.domain.member.service.AuthService;
-import com.souljit2.selleverything.domain.payment_request.mapper.PaymentRequestMapper;
-import com.souljit2.selleverything.domain.payment_request.model.PaymentRequestDTO;
+import com.souljit2.selleverything.domain.purchase_request.mapper.PurchaseRequestMapper;
+import com.souljit2.selleverything.domain.purchase_request.model.PurchaseRequestDTO;
 import com.souljit2.selleverything.global.constants.CacheNames;
 import java.sql.SQLIntegrityConstraintViolationException;
 import lombok.AllArgsConstructor;
@@ -12,18 +12,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class PaymentRequestServiceImpl implements PaymentRequestService {
+public class PurchaseRequestServiceImpl implements PurchaseRequestService {
 
-    private PaymentRequestMapper paymentRequestMapper;
+    private PurchaseRequestMapper purchaseRequestMapper;
     private AuthService authService;
 
     @Override
     @CacheEvict(value = CacheNames.POST)
-    public void createPaymentRequest(int postId) {
+    public void createPurchaseRequest(int postId) {
         int memberId = authService.getRequestMemberId();
         try {
-            paymentRequestMapper.insertPurchaseRequest(
-                new PaymentRequestDTO(
+            purchaseRequestMapper.insertPurchaseRequest(
+                new PurchaseRequestDTO(
                     postId,
                     memberId
                 )
@@ -39,6 +39,6 @@ public class PaymentRequestServiceImpl implements PaymentRequestService {
     @Override
     @CacheEvict(value = CacheNames.POST)
     public void deletePurchaseRequestById(int id) {
-        paymentRequestMapper.deletePurchaseRequestById(id);
+        purchaseRequestMapper.deletePurchaseRequestById(id);
     }
 }
