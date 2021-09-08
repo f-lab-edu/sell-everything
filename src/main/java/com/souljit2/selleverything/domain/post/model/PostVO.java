@@ -30,6 +30,8 @@ public class PostVO {
 
     private String buyerNickname;
 
+    private Integer purchaseRequestId;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
