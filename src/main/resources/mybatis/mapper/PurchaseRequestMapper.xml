@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.souljit2.selleverything.domain.purchase_request.mapper.PurchaseRequestMapper">
+
+    <insert id="insertPurchaseRequest"
+        parameterType="com.souljit2.selleverything.domain.purchase_request.model.PurchaseRequestDTO">
+        INSERT INTO purchase_request (postIdFk,
+                                      memberIdFk)
+        VALUES (#{postIdFk},
+                #{memberIdFk})
+    </insert>
+
+    <delete id="deletePurchaseRequestById">
+        DELETE
+        FROM purchase_request
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

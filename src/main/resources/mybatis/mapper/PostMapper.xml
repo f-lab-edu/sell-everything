@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.souljit2.selleverything.domain.post.mapper.PostMapper">
-    <select id="getPostById" resultType="com.souljit2.selleverything.domain.post.model.PostDTO">
-        SELECT id,
-               postTitle,
-               postContents,
-               postItemPrice,
-               postItemName,
-               postCategory,
-               likeCount,
-               commentCount,
-               createdAt,
-               updatedAt,
-               memberIdFk
-        FROM post
-        WHERE id = #{id}
+    <select id="getPostById" resultType="com.souljit2.selleverything.domain.post.model.PostVO">
+        SELECT p.id,
+               p.postTitle,
+               p.postContents,
+               p.postItemPrice,
+               p.postItemName,
+               p.postCategory,
+               p.likeCount,
+               p.commentCount,
+               p.memberIdFk,
+               m.id             as buyerId,
+               m.memberNickname as buyerNickname,
+               pr.id as purchaseRequestId,
+               p.createdAt,
+               p.updatedAt
+        FROM post p
+                 LEFT OUTER JOIN purchase_request pr ON p.id = pr.postIdFk
+                 LEFT OUTER JOIN member m ON m.id = pr.memberIdFk
+        WHERE p.id = #{id}
     </select>
 
-    <select id="getPosts" resultType="com.souljit2.selleverything.domain.post.model.PostDTO">
-        SELECT id,
-               postTitle,
-               postContents,
-               postItemPrice,
-               postItemName,
-               postCategory,
-               likeCount,
-               commentCount,
-               createdAt,
-               updatedAt,
-               memberIdFk
-        FROM post
-        WHERE id = #{id}
-           OR postTitle = #{postTitle}
-           OR postItemName = #{postItemName}
-           OR postCategory = #{postCategory}
-           OR memberIdFk = #{memberIdFk}
+    <select id="getPosts" resultType="com.souljit2.selleverything.domain.post.model.PostVO">
+        SELECT p.id,
+               p.postTitle,
+               p.postContents,
+               p.postItemPrice,
+               p.postItemName,
+               p.postCategory,
+               p.likeCount,
+               p.commentCount,
+               p.memberIdFk,
+               m.id             as buyerId,
+               m.memberNickname as buyerNickname,
+               pr.id as purchaseRequestId,
+               p.createdAt,
+               p.updatedAt
+        FROM post p
+                 LEFT OUTER JOIN purchase_request pr ON p.id = pr.postIdFk
+                 LEFT OUTER JOIN member m ON m.id = pr.memberIdFk
+        WHERE p.id = #{id}
+           OR p.postTitle = #{postTitle}
+           OR p.postItemName = #{postItemName}
+           OR p.postCategory = #{postCategory}
+           OR p.memberIdFk = #{memberIdFk}
     </select>
 
     <insert id="createPost" parameterType="com.souljit2.selleverything.domain.post.model.PostDTO">

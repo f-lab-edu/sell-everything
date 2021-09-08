@@ -1,6 +1,7 @@
 package com.souljit2.selleverything.domain.post.mapper;
 
 import com.souljit2.selleverything.domain.post.model.PostDTO;
+import com.souljit2.selleverything.domain.post.model.PostVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.Map;
 @Mapper
 public interface PostMapper {
 
-    public PostDTO getPostById(int id);
+    public PostVO getPostById(int id);
 
-    public List<PostDTO> getPosts(Map<String, String> columnConditions);
+    public List<PostVO> getPosts(Map<String, String> columnConditions);
 
     public void createPost(PostDTO newPost);
 

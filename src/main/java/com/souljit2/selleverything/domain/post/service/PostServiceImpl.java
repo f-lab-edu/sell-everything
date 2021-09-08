@@ -1,5 +1,6 @@
 package com.souljit2.selleverything.domain.post.service;
 
+import com.souljit2.selleverything.domain.post.model.PostVO;
 import com.souljit2.selleverything.global.constants.CacheNames;
 import com.souljit2.selleverything.domain.post.model.PostDTO;
 import com.souljit2.selleverything.domain.member.service.AuthService;
@@ -24,13 +25,13 @@ public class PostServiceImpl implements PostService {
     SessionAuthServiceImpl sessionAuthService;
 
     @Override
-    public PostDTO getPostById(int id) {
+    public PostVO getPostById(int id) {
         return postMapper.getPostById(id);
     }
 
     @Cacheable(value = CacheNames.POST)
     @Override
-    public List<PostDTO> getPostsByQueryString(Map<String, String> queryMap) {
+    public List<PostVO> getPostsByQueryString(Map<String, String> queryMap) {
         return postMapper.getPosts(queryMap);
     }
 
