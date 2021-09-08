@@ -32,4 +32,9 @@ public class PaymentRequestServiceImpl implements PaymentRequestService {
             );
         }
     }
+
+    @Override
+    public void deletePurchaseRequestById(int id) {
+        paymentRequestMapper.deletePurchaseRequestById(id);
+    }
 }

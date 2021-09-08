@@ -3,6 +3,8 @@ package com.souljit2.selleverything.domain.payment_request.controller;
 import com.souljit2.selleverything.domain.payment_request.service.PaymentRequestService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,5 +22,11 @@ public class PaymentRequestController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void createPaymentRequest(@RequestParam int postId) {
         paymentRequestService.createPaymentRequest(postId);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePurchaseRequestById(@PathVariable int id) {
+        paymentRequestService.deletePurchaseRequestById(id);
     }
 }

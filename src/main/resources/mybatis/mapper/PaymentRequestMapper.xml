@@ -13,4 +13,10 @@
                 #{memberIdFk})
     </insert>
 
+    <delete id="deletePurchaseRequestById">
+        DELETE
+        FROM purchase_request
+        WHERE id = #{id}
+    </delete>
+
 </mapper>

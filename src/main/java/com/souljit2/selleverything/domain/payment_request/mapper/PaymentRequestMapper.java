@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PaymentRequestMapper {
 
-    public void insertPurchaseRequest(PaymentRequestDTO paymentRequest) throws SQLIntegrityConstraintViolationException;
+    public void insertPurchaseRequest(PaymentRequestDTO paymentRequest)
+        throws SQLIntegrityConstraintViolationException;
+
+    public void deletePurchaseRequestById(int id);
 
 }

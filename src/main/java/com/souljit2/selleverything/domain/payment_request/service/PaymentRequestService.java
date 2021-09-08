@@ -4,4 +4,6 @@ public interface PaymentRequestService {
 
     public void createPaymentRequest(int postId);
 
+    public void deletePurchaseRequestById(int id);
+
 }
