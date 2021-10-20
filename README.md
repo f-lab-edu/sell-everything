@@ -68,7 +68,7 @@
 1. [분산 서버 환경의 세션 정합성 관리](https://souljit2.tistory.com/71)
 2. [Redis 캐시를 통해 읽기 성능 향상하기](https://souljit2.tistory.com/72)
 3. [그래서 DispatcherServlet이 대체 뭐하는 녀석이죠?](https://souljit2.tistory.com/73)
-4. [도커를 이용해 스프링부트 앱 배포하기](https://souljit2.tistory.com/74)
+4. [Docker를 이용해 스프링부트 앱 배포하기](https://souljit2.tistory.com/74)
 
 <br/>
 
