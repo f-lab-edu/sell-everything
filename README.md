@@ -5,6 +5,14 @@
 
 <br/>
 
+
+## 🏗️ System Architecture
+
+![server-architecture](https://user-images.githubusercontent.com/19742896/139019822-1ed6a8a6-82bb-466d-9d8a-259303c816a3.png)
+
+<br/>
+
+
 ## ❓ Sell-Everything
 - 구매자와 판매자의 매칭을 통해 중고 물품을 거래하는 **중고 물품 거래 서비스 플랫폼**입니다.
 - 백엔드 개발에 좀 더 집중하기 위해, 서비스의 UI는 [카카오 오븐 프로토타입](https://ovenapp.io/view/2I2vYPdAE7y8FQ3umsFAHIDhBB1i2gAq/SOtOQ)으로 대체하였습니다.
@@ -19,12 +27,6 @@
 - 이슈 기반의 일감 관리와 Pull-Request & 코드리뷰 기반의 점진적 프로그램 개발
 - 커밋 메시지 컨벤션을 적용하여 읽기 쉬운 작업 이력 생성
 - Git-flow를 적용한 전략적 브랜치 관리
-
-<br/>
-
-## 🏗️ System Structure
-
-![server-architecture](https://user-images.githubusercontent.com/19742896/139019822-1ed6a8a6-82bb-466d-9d8a-259303c816a3.png)
 
 <br/>
 
