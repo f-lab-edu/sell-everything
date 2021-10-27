@@ -6,17 +6,16 @@
 <br/>
 
 
-## 🏗️ System Architecture
-
-![server-architecture](https://user-images.githubusercontent.com/19742896/139020213-72e5ec0e-9091-438e-8c85-fa624a002e06.png)
-
-<br/>
-
-
 ## ❓ Sell-Everything
 - 구매자와 판매자의 매칭을 통해 중고 물품을 거래하는 **중고 물품 거래 서비스 플랫폼**입니다.
 - 백엔드 개발에 좀 더 집중하기 위해, 서비스의 UI는 [카카오 오븐 프로토타입](https://ovenapp.io/view/2I2vYPdAE7y8FQ3umsFAHIDhBB1i2gAq/SOtOQ)으로 대체하였습니다.
 - 단순한 기능 개발보다, 분산 서버 환경에서 일어날 수 있는 다양한 이슈를 해결하며 서버의 성능을 개선하고, 유지보수성 높은 프로그램을 작성하기 위해 고민하며 개발하였습니다.
+
+<br/>
+
+## 🏗️ System Architecture
+
+![server-architecture](https://user-images.githubusercontent.com/19742896/139020213-72e5ec0e-9091-438e-8c85-fa624a002e06.png)
 
 <br/>
 
