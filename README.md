@@ -8,7 +8,7 @@
 
 ## 🏗️ System Architecture
 
-![server-architecture](https://user-images.githubusercontent.com/19742896/139019822-1ed6a8a6-82bb-466d-9d8a-259303c816a3.png)
+![server-architecture](https://user-images.githubusercontent.com/19742896/139020213-72e5ec0e-9091-438e-8c85-fa624a002e06.png)
 
 <br/>
 
