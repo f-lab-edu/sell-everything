@@ -22,6 +22,12 @@
 
 <br/>
 
+## 🏗️ System Structure
+
+![server-architecture](https://user-images.githubusercontent.com/19742896/139019822-1ed6a8a6-82bb-466d-9d8a-259303c816a3.png)
+
+<br/>
+
 ## 📽️ Application UI
 
 <p align="center" style="flex-direction: row;">
