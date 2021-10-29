@@ -10,7 +10,6 @@ public class SellEverythingApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SellEverythingApplication.class, args);
-        System.out.println("test");
     }
 
 }
