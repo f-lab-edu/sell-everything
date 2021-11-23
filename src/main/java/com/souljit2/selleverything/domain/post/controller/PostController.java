@@ -17,7 +17,7 @@ public class PostController {
 
     PostService postService;
 
-    @GetMapping("/test/{id}")
+    @GetMapping("/{id}")
     public PostVO getPostById(@PathVariable("id") int id) {
         return postService.getPostById(id);
     }
